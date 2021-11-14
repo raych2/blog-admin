@@ -1,9 +1,11 @@
 import React from 'react';
 
-function Home() {
+const Home = ({ userData }) => {
   return (
-    <div></div>
+    <div>
+      <h1>Welcome {userData}!</h1>
+    </div>
   );
-}
+};
 
 export default Home;
