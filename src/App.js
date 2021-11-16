@@ -4,6 +4,8 @@ import Nav from './components/Nav';
 import Home from './components/Home';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
+import PostForm from './components/PostForm';
+import PostEditor from './components/PostEditor';
 
 function App() {
   const [authorizedUser, setAuthorizedUser] = useState(false);
@@ -50,6 +52,18 @@ function App() {
             )
           }
         />
+        <Route
+          exact
+          path="/posts/:id"
+          element={
+            !authorizedUser ? (
+              <Login setAuthorizedUser={setAuthorizedUser} />
+            ) : (
+              <PostEditor />
+            )
+          }
+        />
+        <Route exact path="/posts/create" element={<PostForm />} />
         <Route exact path="/signup" element={<SignUp />} />
       </Routes>
     </Router>
