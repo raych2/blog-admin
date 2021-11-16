@@ -77,7 +77,7 @@ const PostPreview = (props) => {
             <h2>{title}</h2>
           </PostLink>
           <p className="author">By: {author}</p>
-          <div clasName="text">{postText}</div>
+          <div className="text">{postText}</div>
         </div>
         <hr />
         <div className="data">
