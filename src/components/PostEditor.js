@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Spinner from 'react-spinkit';
+import CommentDetail from './CommentDetail';
 
 const SpinnerContainer = styled.div`
   margin-top: 200px;
@@ -78,9 +79,11 @@ const Editor = styled.div`
     color: #ca7d02;
   }
 `;
+
 const PostEditor = () => {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
+  const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
@@ -99,6 +102,7 @@ const PostEditor = () => {
         const data = await response.json();
         setTitle(data.post.title);
         setText(data.post.text);
+        setComments(data.post.comments);
       } catch (err) {
         console.log(err);
         setError(true);
@@ -226,6 +230,20 @@ const PostEditor = () => {
           </form>
           {error ? <div>Error: {error}</div> : <></>}
           <div className="message">{message}</div>
+          <div>
+            <h1>Comments</h1>
+            {comments && comments.length > 0 ? (
+              comments.map((comment) => {
+                return (
+                  <div key={comment._id}>
+                    <CommentDetail comment={comment} />
+                  </div>
+                );
+              })
+            ) : (
+              <p>There are no comments.</p>
+            )}
+          </div>
         </Editor>
       )}
     </>
