@@ -183,13 +183,14 @@ const PostEditor = () => {
         setMessage(data.message);
         setTimeout(() => {
           navigate('/posts');
-        }, 3000);
+        }, 1500);
       }
     } catch (err) {
       console.log(err.message);
       setError(err.status);
     }
   };
+
   return (
     <>
       {loading ? (
@@ -236,7 +237,13 @@ const PostEditor = () => {
               comments.map((comment) => {
                 return (
                   <div key={comment._id}>
-                    <CommentDetail comment={comment} />
+                    <CommentDetail
+                      comment={comment}
+                      message={message}
+                      setMessage={setMessage}
+                      error={error}
+                      setError={setError}
+                    />
                   </div>
                 );
               })
