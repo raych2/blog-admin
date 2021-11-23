@@ -48,6 +48,9 @@ const NewPost = styled.div`
     border-radius: 3px;
     font-weight: 100;
   }
+  .error {
+    color: #A9232E;
+  }
   .message {
     color: #ca7d02;
   }
@@ -78,15 +81,21 @@ const PostForm = () => {
         }
       );
       const data = await response.json();
-      if (response.status === 200) {
+      if(data.errors) {
+        let errorMessages = [];
+        data.errors.map(error => {
+          errorMessages.push(`${error.msg} `);
+        })
+        setError(errorMessages);
+      } else {
+        setError('');
         setMessage(data.message);
         setTimeout(() => {
           navigate('/posts');
         }, 1500);
       }
     } catch (err) {
-      console.log(err.message);
-      setError(err.status);
+      console.log(err);
     }
   };
   return (
@@ -111,7 +120,7 @@ const PostForm = () => {
         />
         <input className="submit" type="submit" value="Submit" />
       </form>
-      {error ? <div>Error: {error}</div> : <></>}
+      {error ? <div className='error'>Error: {error}</div> : <></>}
       <div className="message">{message}</div>
     </NewPost>
   );
