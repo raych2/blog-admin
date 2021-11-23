@@ -33,6 +33,7 @@ const Navbar = styled.nav`
     list-style-type: none;
     padding: 1rem;
     &:hover {
+      color: #14213d;
       background-color: #e5e5e5;
     }
   }
@@ -62,14 +63,14 @@ const Nav = ({ authorizedUser, setAuthorizedUser }) => {
           <NavLink to="/">
             <h1 className="authorized">TOP Blog Admin</h1>
           </NavLink>
-          <div className="link-list">
+          <ul className="link-list">
             <NavLink to="/posts/create">
               <li>Create post</li>
             </NavLink>
             <NavLink onClick={logOut} to="/">
               <li>Log out</li>
             </NavLink>
-          </div>
+          </ul>
         </>
       ) : (
         <NavLink to="/">
