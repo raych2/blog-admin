@@ -134,7 +134,7 @@ const PostEditor = () => {
       const data = await response.json();
       if (data.errors) {
         let updateErrors = [];
-        data.errors.map((error) => {
+        data.errors.forEach((error) => {
           updateErrors.push(`${error.msg} `);
         });
         setError(updateErrors);

@@ -83,7 +83,7 @@ const PostForm = () => {
       const data = await response.json();
       if(data.errors) {
         let errorMessages = [];
-        data.errors.map(error => {
+        data.errors.forEach(error => {
           errorMessages.push(`${error.msg} `);
         })
         setError(errorMessages);
