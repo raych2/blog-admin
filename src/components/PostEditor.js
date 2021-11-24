@@ -75,7 +75,12 @@ const Editor = styled.div`
     color: #ffffff;
     font-weight: 100;
   }
+  .error {
+    margin-bottom: 5px;
+    color: #a9232e;
+  }
   .message {
+    margin-bottom: 10px;
     color: #ca7d02;
   }
 `;
@@ -93,7 +98,6 @@ const PostEditor = () => {
 
   useEffect(() => {
     async function fetchBlogPostAPI() {
-      setError(false);
       setLoading(true);
       try {
         const response = await fetch(
@@ -105,7 +109,6 @@ const PostEditor = () => {
         setComments(data.post.comments);
       } catch (err) {
         console.log(err);
-        setError(true);
       }
       setLoading(false);
     }
@@ -129,15 +132,24 @@ const PostEditor = () => {
         }
       );
       const data = await response.json();
-      if (response.status === 200) {
+      if (data.errors) {
+        let updateErrors = [];
+        data.errors.map((error) => {
+          updateErrors.push(`${error.msg} `);
+        });
+        setError(updateErrors);
+      } else {
+        setError('');
         setMessage(data.message);
         setTimeout(() => {
           navigate('/posts');
-        }, 3000);
+        }, 1500);
       }
     } catch (err) {
-      console.log(err.message);
-      setError(err.status);
+      console.log(err);
+      setError(
+        `There was a problem with updating your post. Check if you're logged in.`
+      );
     }
   };
   const publishPost = async (e) => {
@@ -155,14 +167,17 @@ const PostEditor = () => {
       );
       const data = await response.json();
       if (response.status === 200) {
+        setError('');
         setMessage(data.message);
         setTimeout(() => {
           navigate('/posts');
-        }, 3000);
+        }, 1500);
       }
     } catch (err) {
-      console.log(err.message);
-      setError(err.status);
+      console.log(err);
+      setError(
+        `There was a problem with publishing your post. Check if you're logged in.`
+      );
     }
   };
   const deletePost = async (e) => {
@@ -180,14 +195,17 @@ const PostEditor = () => {
       );
       const data = await response.json();
       if (response.status === 200) {
+        setError('');
         setMessage(data.message);
         setTimeout(() => {
           navigate('/posts');
         }, 1500);
       }
     } catch (err) {
-      console.log(err.message);
-      setError(err.status);
+      console.log(err);
+      setError(
+        `There was a problem with deleting your post. Check if you're logged in.`
+      );
     }
   };
 
@@ -229,7 +247,7 @@ const PostEditor = () => {
               </button>
             </div>
           </form>
-          {error ? <div>Error: {error}</div> : <></>}
+          {error ? <div className="error">Error: {error}</div> : <></>}
           <div className="message">{message}</div>
           <div>
             <h1>Comments</h1>
