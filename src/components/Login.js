@@ -43,6 +43,10 @@ const LoginForm = styled.div`
     border-radius: 3px;
     font-weight: 100;
   }
+  .error {
+    margin: 10px 0;
+    color: #a9232e;
+  }
 `;
 const NavLink = styled(Link)`
   &:focus,
@@ -56,7 +60,7 @@ const NavLink = styled(Link)`
   color: #fca311;
 `;
 
-const Login = ({setAuthorizedUser }) => {
+const Login = ({ setAuthorizedUser }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -81,10 +85,11 @@ const Login = ({setAuthorizedUser }) => {
         localStorage.setItem('name', username);
         setAuthorizedUser(true);
         navigate('/posts');
+      } else {
+        setError(auth.message);
       }
     } catch (err) {
-      console.log(err.message);
-      setError(err.status);
+      console.log(err);
     }
   };
   return (
@@ -112,7 +117,7 @@ const Login = ({setAuthorizedUser }) => {
       <div>
         Don't have an account? <NavLink to="/signup">Sign up</NavLink>
       </div>
-      {error ? <div>Error: {error}</div> : <></>}
+      {error ? <div className="error">Error: {error}</div> : <></>}
     </LoginForm>
   );
 };
