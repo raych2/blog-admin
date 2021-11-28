@@ -95,10 +95,10 @@ const SignUp = () => {
       } else {
         setError('');
         setMessage(
-          `${result.message}. You'll be redirected to the Login page.`
+          `${result.message}. You'll be redirected to the Login page to log in.`
         );
         setTimeout(() => {
-          navigate('/posts');
+          navigate('/login');
         }, 3000);
       }
     } catch (err) {
