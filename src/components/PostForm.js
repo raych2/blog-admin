@@ -54,6 +54,11 @@ const NewPost = styled.div`
   .message {
     color: #ca7d02;
   }
+  @media (max-width: 400px) {
+    form {
+      width: 90%;
+    }
+  }
 `;
 const PostForm = () => {
   const [title, setTitle] = useState('');

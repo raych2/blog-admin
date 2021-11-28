@@ -83,6 +83,11 @@ const Editor = styled.div`
     margin-bottom: 10px;
     color: #ca7d02;
   }
+  @media (max-width: 400px) {
+    form {
+      width: 90%;
+    }
+  }
 `;
 
 const PostEditor = () => {

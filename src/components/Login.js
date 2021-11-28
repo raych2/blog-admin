@@ -47,6 +47,11 @@ const LoginForm = styled.div`
     margin: 10px 0;
     color: #a9232e;
   }
+  @media (max-width: 400px) {
+    form {
+      width: 90%;
+    }
+  }
 `;
 const NavLink = styled(Link)`
   &:focus,

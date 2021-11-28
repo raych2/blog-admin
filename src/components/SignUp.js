@@ -52,6 +52,9 @@ const SignUpForm = styled.div`
     margin: 10px 0;
     color: #ca7d02;
   }
+  @media (max-width: 400px) {
+    width: 90%;
+  }
 `;
 const NavLink = styled(Link)`
   &:focus,
