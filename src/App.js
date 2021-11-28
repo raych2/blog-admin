@@ -64,6 +64,11 @@ function App() {
           }
         />
         <Route exact path="/posts/create" element={<PostForm />} />
+        <Route
+          exact
+          path="/login"
+          element={<Login setAuthorizedUser={setAuthorizedUser} />}
+        />
         <Route exact path="/signup" element={<SignUp />} />
       </Routes>
     </Router>
