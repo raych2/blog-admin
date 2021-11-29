@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import NavLink from './shared/NavLink';
 import BurgerMenu from './BurgerMenu';
 
 const Navbar = styled.nav`
@@ -25,17 +25,6 @@ const Navbar = styled.nav`
       margin: 1rem;
     }
   }
-`;
-const NavLink = styled(Link)`
-  &:focus,
-  &:hover,
-  &:visited,
-  &:link,
-  &:active {
-    text-decoration: none;
-  }
-  display: block;
-  color: #ffffff;
 `;
 
 const Nav = ({ authorizedUser, setAuthorizedUser }) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import NavLink from './shared/NavLink';
 
 const LinkList = styled.ul`
   margin: 0;
@@ -26,17 +26,6 @@ const LinkList = styled.ul`
     padding-top: 0;
     transition: transform 0.3s ease-in-out;
   }
-`;
-const NavLink = styled(Link)`
-  &:focus,
-  &:hover,
-  &:visited,
-  &:link,
-  &:active {
-    text-decoration: none;
-  }
-  display: block;
-  color: #ffffff;
 `;
 
 const NavigationLinks = ({ setAuthorizedUser, open, setOpen }) => {
