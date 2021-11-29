@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useNavigate, Link } from 'react-router-dom';
+import NavLink from './shared/NavLink';
+import { useNavigate} from 'react-router-dom';
 
 const SignUpForm = styled.div`
   margin: 50px auto 0 auto;
@@ -56,14 +57,7 @@ const SignUpForm = styled.div`
     width: 90%;
   }
 `;
-const NavLink = styled(Link)`
-  &:focus,
-  &:hover,
-  &:visited,
-  &:link,
-  &:active {
-    text-decoration: none;
-  }
+const InlineNavLink = styled(NavLink)`
   display: inline;
   color: #fca311;
 `;
@@ -131,7 +125,7 @@ const SignUp = () => {
         <input className="submit" type="submit" value="Submit" />
       </form>
       <div>
-        Already have an account? <NavLink to="/login">Log in</NavLink>
+        Already have an account? <InlineNavLink to="/login">Log in</InlineNavLink>
       </div>
       {error ? <div className="error">Error: {error}</div> : <></>}
       <div className="message">{message}</div>
