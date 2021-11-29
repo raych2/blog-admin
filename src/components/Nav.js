@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import BurgerMenu from './BurgerMenu';
 
 const Navbar = styled.nav`
   display: flex;
@@ -8,7 +9,6 @@ const Navbar = styled.nav`
   align-items: center;
   width: 100%;
   background-color: #14213d;
-
   .public,
   .authorized {
     font-weight: 400;
@@ -20,21 +20,9 @@ const Navbar = styled.nav`
   .authorized {
     margin-left: 1rem;
   }
-  .link-list {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    list-style-type: none;
-    @media (max-width: 400px) {
-      width: 30%;
-    }
-  }
-  li {
-    list-style-type: none;
-    padding: 1rem;
-    &:hover {
-      color: #14213d;
-      background-color: #e5e5e5;
+  @media (max-width: 400px) {
+    .authorized {
+      margin: 1rem;
     }
   }
 `;
@@ -51,11 +39,6 @@ const NavLink = styled(Link)`
 `;
 
 const Nav = ({ authorizedUser, setAuthorizedUser }) => {
-  const logOut = (e) => {
-    localStorage.setItem('bearer', '');
-    setAuthorizedUser(false);
-  };
-
   return (
     <Navbar>
       {authorizedUser ? (
@@ -63,14 +46,7 @@ const Nav = ({ authorizedUser, setAuthorizedUser }) => {
           <NavLink to="/">
             <h1 className="authorized">TOP Blog Admin</h1>
           </NavLink>
-          <ul className="link-list">
-            <NavLink to="/posts/create">
-              <li>Create post</li>
-            </NavLink>
-            <NavLink onClick={logOut} to="/">
-              <li>Log out</li>
-            </NavLink>
-          </ul>
+          <BurgerMenu setAuthorizedUser={setAuthorizedUser} />
         </>
       ) : (
         <NavLink to="/">
