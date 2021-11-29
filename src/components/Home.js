@@ -1,16 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Spinner from 'react-spinkit';
 import PostPreview from './PostPreview';
+import LoadingIndicator from './shared/LoadingIndicator';
 
-const SpinnerContainer = styled.div`
-  margin-top: 200px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-`;
 const PostList = styled.div`
   margin-top: 20px;
   display: flex;
@@ -50,9 +42,7 @@ const Home = ({ userData }) => {
     <div>
       {error && <div>An error occurred</div>}
       {loading ? (
-        <SpinnerContainer>
-          <Spinner name="ball-spin-fade-loader" color="#FCA311" />
-        </SpinnerContainer>
+        <LoadingIndicator />
       ) : (
         <PostList>
           <h1>Welcome {userData}!</h1>

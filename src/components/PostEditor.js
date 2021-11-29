@@ -1,17 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import Spinner from 'react-spinkit';
+import LoadingIndicator from './shared/LoadingIndicator';
 import CommentDetail from './CommentDetail';
 
-const SpinnerContainer = styled.div`
-  margin-top: 200px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-`;
 const Editor = styled.div`
   margin: 50px auto 0 auto;
   display: flex;
@@ -217,9 +209,7 @@ const PostEditor = () => {
   return (
     <>
       {loading ? (
-        <SpinnerContainer>
-          <Spinner name="ball-spin-fade-loader" color="#FCA311" />
-        </SpinnerContainer>
+        <LoadingIndicator />
       ) : (
         <Editor>
           <h1>Post Editor</h1>
