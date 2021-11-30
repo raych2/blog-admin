@@ -72,7 +72,7 @@ const PostForm = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `https://rt-blog-api.herokuapp.com/posts/create`,
+        `https://rt-blog-api.herokuapp.com/posts`,
         {
           method: 'POST',
           headers: {
