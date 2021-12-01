@@ -8,6 +8,8 @@ const Navbar = styled.nav`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  position: fixed;
+  top: 0;
   background-color: #14213d;
   .public,
   .authorized {
