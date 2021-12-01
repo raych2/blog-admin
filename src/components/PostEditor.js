@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import LoadingIndicator from './shared/LoadingIndicator';
 import ErrorMessage from './shared/ErrorMessage';
+import SuccessMessage from './shared/SuccessMessage';
 import CommentDetail from './CommentDetail';
 
 const Editor = styled.div`
@@ -67,10 +68,6 @@ const Editor = styled.div`
     border-radius: 3px;
     color: #ffffff;
     font-weight: 100;
-  }
-  .message {
-    margin-bottom: 10px;
-    color: #ca7d02;
   }
   @media (max-width: 400px) {
     form {
@@ -240,7 +237,7 @@ const PostEditor = () => {
             </div>
           </form>
           {error ? <ErrorMessage>Error: {error}</ErrorMessage> : <></>}
-          <div className="message">{message}</div>
+          <SuccessMessage>{message}</SuccessMessage>
           <div>
             <h1>Comments</h1>
             {comments && comments.length > 0 ? (

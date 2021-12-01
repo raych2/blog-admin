@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import NavLink from './shared/NavLink';
 import ErrorMessage from './shared/ErrorMessage';
+import SuccessMessage from './shared/SuccessMessage';
 import { useNavigate} from 'react-router-dom';
 
 const SignUpForm = styled.div`
@@ -45,10 +46,6 @@ const SignUpForm = styled.div`
     border-color: #7a7a7a;
     border-radius: 3px;
     font-weight: 100;
-  }
-  .message {
-    margin: 10px 0;
-    color: #ca7d02;
   }
   @media (max-width: 400px) {
     width: 90%;
@@ -125,7 +122,7 @@ const SignUp = () => {
         Already have an account? <InlineNavLink to="/login">Log in</InlineNavLink>
       </div>
       {error ? <ErrorMessage>Error: {error}</ErrorMessage> : <></>}
-      <div className="message">{message}</div>
+      <SuccessMessage>{message}</SuccessMessage>
     </SignUpForm>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ErrorMessage from './shared/ErrorMessage';
+import SuccessMessage from './shared/SuccessMessage';
 import styled from 'styled-components';
 
 const NewPost = styled.div`
@@ -48,9 +49,6 @@ const NewPost = styled.div`
     border-color: #7a7a7a;
     border-radius: 3px;
     font-weight: 100;
-  }
-  .message {
-    color: #ca7d02;
   }
   @media (max-width: 400px) {
     form {
@@ -124,7 +122,7 @@ const PostForm = () => {
         <input className="submit" type="submit" value="Submit" />
       </form>
       {error ? <ErrorMessage>Error: {error}</ErrorMessage> : <></>}
-      <div className="message">{message}</div>
+      <SuccessMessage>{message}</SuccessMessage>
     </NewPost>
   );
 };
