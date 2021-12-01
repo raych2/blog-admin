@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import NavLink from './shared/NavLink';
+import ErrorMessage from './shared/ErrorMessage';
 import { useNavigate } from 'react-router-dom';
 
 const LoginForm = styled.div`
-  margin: 50px auto 0 auto;
+  margin: 80px auto 0 auto;
   display: flex;
   flex-flow: column wrap;
   align-content: center;
@@ -43,10 +44,6 @@ const LoginForm = styled.div`
     border-color: #7a7a7a;
     border-radius: 3px;
     font-weight: 100;
-  }
-  .error {
-    margin: 10px 0;
-    color: #a9232e;
   }
   @media (max-width: 400px) {
     form {
@@ -117,7 +114,7 @@ const Login = ({ setAuthorizedUser }) => {
         Don't have an account?{' '}
         <InlineNavLink to="/signup">Sign up</InlineNavLink>
       </div>
-      {error ? <div className="error">Error: {error}</div> : <></>}
+      {error ? <ErrorMessage>Error: {error}</ErrorMessage> : <></>}
     </LoginForm>
   );
 };

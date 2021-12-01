@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ErrorMessage from './shared/ErrorMessage';
 import styled from 'styled-components';
 
 const NewPost = styled.div`
@@ -47,9 +48,6 @@ const NewPost = styled.div`
     border-color: #7a7a7a;
     border-radius: 3px;
     font-weight: 100;
-  }
-  .error {
-    color: #A9232E;
   }
   .message {
     color: #ca7d02;
@@ -125,7 +123,7 @@ const PostForm = () => {
         />
         <input className="submit" type="submit" value="Submit" />
       </form>
-      {error ? <div className='error'>Error: {error}</div> : <></>}
+      {error ? <ErrorMessage>Error: {error}</ErrorMessage> : <></>}
       <div className="message">{message}</div>
     </NewPost>
   );

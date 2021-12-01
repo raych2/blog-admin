@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import LoadingIndicator from './shared/LoadingIndicator';
+import ErrorMessage from './shared/ErrorMessage';
 import CommentDetail from './CommentDetail';
 
 const Editor = styled.div`
@@ -66,10 +67,6 @@ const Editor = styled.div`
     border-radius: 3px;
     color: #ffffff;
     font-weight: 100;
-  }
-  .error {
-    margin-bottom: 5px;
-    color: #a9232e;
   }
   .message {
     margin-bottom: 10px;
@@ -242,7 +239,7 @@ const PostEditor = () => {
               </button>
             </div>
           </form>
-          {error ? <div className="error">Error: {error}</div> : <></>}
+          {error ? <ErrorMessage>Error: {error}</ErrorMessage> : <></>}
           <div className="message">{message}</div>
           <div>
             <h1>Comments</h1>

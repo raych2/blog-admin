@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PostPreview from './PostPreview';
 import LoadingIndicator from './shared/LoadingIndicator';
+import ErrorMessage from './shared/ErrorMessage';
 
 const PostList = styled.div`
   margin-top: 20px;
@@ -40,7 +41,7 @@ const Home = ({ userData }) => {
   }, []);
   return (
     <div>
-      {error && <div>An error occurred</div>}
+      {error && <ErrorMessage>An error occurred</ErrorMessage>}
       {loading ? (
         <LoadingIndicator />
       ) : (
