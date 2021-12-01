@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const NewPost = styled.div`
-  margin: 50px auto 0 auto;
+  margin: 80px auto 0 auto;
   display: flex;
   flex-flow: column wrap;
   align-content: center;

@@ -5,7 +5,7 @@ import LoadingIndicator from './shared/LoadingIndicator';
 import CommentDetail from './CommentDetail';
 
 const Editor = styled.div`
-  margin: 50px auto 0 auto;
+  margin: 80px auto 0 auto;
   display: flex;
   flex-flow: column wrap;
   align-content: center;
