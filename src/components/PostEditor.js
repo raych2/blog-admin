@@ -66,10 +66,16 @@ const Editor = styled.div`
     color: #ffffff;
     font-weight: 100;
   }
-  @media (max-width: 400px) {
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
     form {
-      width: 90%;
+      width: 80%;
     }
+  }
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    form {
+      width: 100%;
+    }
+    width: 90%;
   }
 `;
 const FormButtons = styled.div`

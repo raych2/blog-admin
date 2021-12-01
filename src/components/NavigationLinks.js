@@ -14,7 +14,7 @@ const LinkList = styled.ul`
       background-color: #e5e5e5;
     }
   }
-  @media (max-width: 400px) {
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     flex-flow: column nowrap;
     background-color: #14213d;
     position: fixed;

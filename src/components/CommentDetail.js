@@ -25,12 +25,18 @@ const CommentContainer = styled.div`
 `;
 const CommentHeader = styled.div`
   display: flex;
-  flex-flow: row no wrap;
+  flex-flow: row nowrap;
   justify-content: space-between;
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    flex-flow: column-reverse nowrap;
+  }
 `;
 const Author = styled.p`
   margin-bottom: 20px;
   color: #7a7a7a;
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    padding-top: 10px;
+  }
 `;
 
 const CommentDetail = (props) => {

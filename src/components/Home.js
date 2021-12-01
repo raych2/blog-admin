@@ -5,10 +5,10 @@ import LoadingIndicator from './shared/LoadingIndicator';
 import ErrorMessage from './shared/ErrorMessage';
 
 const PostList = styled.div`
-  margin-top: 20px;
+  margin-top: 80px;
   display: flex;
-  flex-flow: column wrap;
-  align-content: space-around;
+  flex-flow: column nowrap;
+  align-content: space-evenly;
 
   h1 {
     margin-bottom: 20px;

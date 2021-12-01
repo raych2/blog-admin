@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import NavLink from './shared/NavLink';
 import ErrorMessage from './shared/ErrorMessage';
 import SuccessMessage from './shared/SuccessMessage';
-import { useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const SignUpForm = styled.div`
   margin: 80px auto 0 auto;
@@ -47,7 +47,12 @@ const SignUpForm = styled.div`
     border-radius: 3px;
     font-weight: 100;
   }
-  @media (max-width: 400px) {
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    form {
+      width: 50vw;
+    }
+  }
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     width: 90%;
   }
 `;
@@ -119,7 +124,8 @@ const SignUp = () => {
         <input className="submit" type="submit" value="Submit" />
       </form>
       <div>
-        Already have an account? <InlineNavLink to="/login">Log in</InlineNavLink>
+        Already have an account?{' '}
+        <InlineNavLink to="/login">Log in</InlineNavLink>
       </div>
       {error ? <ErrorMessage>Error: {error}</ErrorMessage> : <></>}
       <SuccessMessage>{message}</SuccessMessage>

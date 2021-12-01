@@ -50,7 +50,12 @@ const NewPost = styled.div`
     border-radius: 3px;
     font-weight: 100;
   }
-  @media (max-width: 400px) {
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    form {
+      width: 80%;
+    }
+  }
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     form {
       width: 90%;
     }
@@ -67,26 +72,23 @@ const PostForm = () => {
   const createNewPost = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        `https://rt-blog-api.herokuapp.com/posts`,
-        {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            title,
-            text,
-          }),
-        }
-      );
+      const response = await fetch(`https://rt-blog-api.herokuapp.com/posts`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title,
+          text,
+        }),
+      });
       const data = await response.json();
-      if(data.errors) {
+      if (data.errors) {
         let errorMessages = [];
-        data.errors.forEach(error => {
+        data.errors.forEach((error) => {
           errorMessages.push(`${error.msg} `);
-        })
+        });
         setError(errorMessages);
       } else {
         setError('');
