@@ -43,9 +43,6 @@ const Editor = styled.div`
     font-size: 1em;
     padding: 10px 0 0 5px;
   }
-  .form-buttons {
-    display: inline;
-  }
   .submit,
   .publish {
     margin-right: 10px;
@@ -74,6 +71,9 @@ const Editor = styled.div`
       width: 90%;
     }
   }
+`;
+const FormButtons = styled.div`
+  display: inline;
 `;
 
 const PostEditor = () => {
@@ -226,7 +226,7 @@ const PostEditor = () => {
               onChange={(e) => setText(e.target.value)}
               required
             />
-            <div className="form-buttons">
+            <FormButtons>
               <input className="submit" type="submit" value="Update Post" />
               <button className="publish" type="button" onClick={publishPost}>
                 Publish
@@ -234,7 +234,7 @@ const PostEditor = () => {
               <button className="delete" type="button" onClick={deletePost}>
                 Delete
               </button>
-            </div>
+            </FormButtons>
           </form>
           {error ? <ErrorMessage>Error: {error}</ErrorMessage> : <></>}
           <SuccessMessage>{message}</SuccessMessage>

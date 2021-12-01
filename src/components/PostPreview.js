@@ -11,30 +11,13 @@ const PostContainer = styled.div`
   border: 0.5px solid #7a7a7a;
   border-radius: 5px;
 
-  .info {
-    max-width: 100%;
-    text-align: left;
-  }
   h2 {
     margin: 5px auto;
-  }
-  .author {
-    margin: 5px auto;
-  }
-  .text {
-    margin: 10px auto;
   }
   hr {
     margin: 10px auto;
     border: none;
     border-top: 1px solid #000;
-  }
-  .data {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    max-width: 100%;
-    margin: 0 auto;
   }
   .published {
     color: #466ec3;
@@ -44,9 +27,26 @@ const PostContainer = styled.div`
   }
   @media (max-width: 400px) {
     width: 100%;
-    .data {
-      flex-direction: column;
-    }
+  }
+`;
+const Info = styled.div`
+  max-width: 100%;
+  text-align: left;
+`;
+const Author = styled.p`
+  margin: 5px auto;
+`;
+const Text = styled.div`
+  margin: 10px auto;
+`;
+const Data = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  max-width: 100%;
+  margin: 0 auto;
+  @media (max-width: 400px) {
+    flex-direction: column;
   }
 `;
 const PostLink = styled(Link)`
@@ -72,15 +72,15 @@ const PostPreview = (props) => {
   return (
     <>
       <PostContainer>
-        <div className="info">
+        <Info>
           <PostLink to={`/posts/${id}`}>
             <h2>{title}</h2>
           </PostLink>
-          <p className="author">By: {author}</p>
-          <div className="text">{postText}</div>
-        </div>
+          <Author>By: {author}</Author>
+          <Text>{postText}</Text>
+        </Info>
         <hr />
-        <div className="data">
+        <Data>
           <div>
             <p>{postDate}</p>
             {comments.length === 0 ? (
@@ -96,7 +96,7 @@ const PostPreview = (props) => {
           ) : (
             <p className="unpublished">Unpublished</p>
           )}
-        </div>
+        </Data>
       </PostContainer>
     </>
   );
