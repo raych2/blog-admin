@@ -12,15 +12,6 @@ const CommentContainer = styled.div`
   background: #ffffff;
   border-radius: 5px;
   border: 0.5px solid #e5e5e5;
-  .comment-header {
-    display: flex;
-    flex-flow: row no wrap;
-    justify-content: space-between;
-  }
-  .author {
-    margin-bottom: 20px;
-    color: #7a7a7a;
-  }
   button {
     background: #14213d;
     margin-right: 5px;
@@ -31,6 +22,15 @@ const CommentContainer = styled.div`
     color: #ca7d02;
     margin: 5px 0;
   }
+`;
+const CommentHeader = styled.div`
+  display: flex;
+  flex-flow: row no wrap;
+  justify-content: space-between;
+`;
+const Author = styled.p`
+  margin-bottom: 20px;
+  color: #7a7a7a;
 `;
 
 const CommentDetail = (props) => {
@@ -74,10 +74,10 @@ const CommentDetail = (props) => {
 
   return (
     <CommentContainer>
-      <div className="comment-header">
-        <p className="author">
+      <CommentHeader>
+        <Author>
           {author} • {commentDate}
-        </p>
+        </Author>
         <button>
           <FontAwesomeIcon
             icon={faTrashAlt}
@@ -85,7 +85,7 @@ const CommentDetail = (props) => {
             onClick={deleteComment}
           />
         </button>
-      </div>
+      </CommentHeader>
       <p>{text}</p>
     </CommentContainer>
   );
