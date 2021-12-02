@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Nav from './components/Nav';
 import Home from './components/Home';
 import SignUp from './components/SignUp';
@@ -42,7 +42,6 @@ function App() {
           }
         ></Route>
         <Route
-          exact
           path="/posts"
           element={
             !authorizedUser ? (
@@ -53,7 +52,6 @@ function App() {
           }
         />
         <Route
-          exact
           path="/posts/:id"
           element={
             !authorizedUser ? (
@@ -63,13 +61,12 @@ function App() {
             )
           }
         />
-        <Route exact path="/posts/create" element={<PostForm />} />
+        <Route path="/posts/create" element={<PostForm />} />
         <Route
-          exact
           path="/login"
           element={<Login setAuthorizedUser={setAuthorizedUser} />}
         />
-        <Route exact path="/signup" element={<SignUp />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
     </Router>
   );
