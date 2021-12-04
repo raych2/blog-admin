@@ -89,6 +89,8 @@ const PostEditor = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
+  const parseEntities = (text) =>
+    new DOMParser().parseFromString(text, 'text/html').body.innerText;
   let params = useParams();
   let navigate = useNavigate();
   let token = localStorage.getItem('bearer');
@@ -216,7 +218,7 @@ const PostEditor = () => {
           <form onSubmit={updatePost}>
             <label htmlFor="postTitle">Title:</label>
             <input
-              defaultValue={title}
+              defaultValue={parseEntities(title)}
               type="text"
               id="postTitle"
               onChange={(e) => setTitle(e.target.value)}
@@ -224,7 +226,7 @@ const PostEditor = () => {
             />
             <label htmlFor="postText">Text:</label>
             <textarea
-              value={text}
+              value={parseEntities(text)}
               id="postText"
               rows="5"
               cols="33"

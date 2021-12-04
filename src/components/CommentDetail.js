@@ -48,6 +48,8 @@ const CommentDetail = (props) => {
   const setMessage = props.setMessage;
   const error = props.error;
   const setError = props.setError;
+  const parseEntities = (text) =>
+    new DOMParser().parseFromString(text, 'text/html').body.innerText;
   let params = useParams();
   let navigate = useNavigate();
   let token = localStorage.getItem('bearer');
@@ -92,7 +94,7 @@ const CommentDetail = (props) => {
           />
         </button>
       </CommentHeader>
-      <p>{text}</p>
+      <p>{parseEntities(text)}</p>
     </CommentContainer>
   );
 };
