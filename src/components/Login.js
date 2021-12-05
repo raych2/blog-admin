@@ -61,7 +61,7 @@ const InlineNavLink = styled(NavLink)`
   color: #fca311;
 `;
 
-const Login = ({ setAuthorizedUser }) => {
+const Login = ({ setAuthorizedUser, setUserData }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -83,7 +83,7 @@ const Login = ({ setAuthorizedUser }) => {
       const auth = await response.json();
       if (auth.token) {
         localStorage.setItem('bearer', auth.token);
-        localStorage.setItem('name', username);
+        setUserData(username);
         setAuthorizedUser(true);
         navigate('/posts');
       } else {

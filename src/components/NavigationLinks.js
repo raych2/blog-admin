@@ -28,10 +28,11 @@ const LinkList = styled.ul`
   }
 `;
 
-const NavigationLinks = ({ setAuthorizedUser, open, setOpen }) => {
+const NavigationLinks = ({ setAuthorizedUser, setUserData, open, setOpen }) => {
   const logOut = (e) => {
     localStorage.setItem('bearer', '');
     setAuthorizedUser(false);
+    setUserData('');
   };
 
   return (

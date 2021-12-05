@@ -35,7 +35,7 @@ const StyledBurger = styled.div`
   }
 `;
 
-const BurgerMenu = ({ setAuthorizedUser }) => {
+const BurgerMenu = ({ setAuthorizedUser, setUserData }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -49,6 +49,7 @@ const BurgerMenu = ({ setAuthorizedUser }) => {
         open={open}
         setOpen={setOpen}
         setAuthorizedUser={setAuthorizedUser}
+        setUserData={setUserData}
       />
     </>
   );

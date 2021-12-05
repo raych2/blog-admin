@@ -28,6 +28,7 @@ function App() {
       <Nav
         authorizedUser={authorizedUser}
         setAuthorizedUser={setAuthorizedUser}
+        setUserData={setUserData}
       />
       <Routes>
         <Route
@@ -35,7 +36,7 @@ function App() {
           path="/"
           element={
             !authorizedUser ? (
-              <Login setAuthorizedUser={setAuthorizedUser} />
+              <Login setAuthorizedUser={setAuthorizedUser} setUserData={setUserData}/>
             ) : (
               <Home userData={userData} />
             )
@@ -45,7 +46,7 @@ function App() {
           path="/posts"
           element={
             !authorizedUser ? (
-              <Login setAuthorizedUser={setAuthorizedUser} />
+              <Login setAuthorizedUser={setAuthorizedUser} setUserData={setUserData}/>
             ) : (
               <Home userData={userData} />
             )
@@ -55,7 +56,7 @@ function App() {
           path="/posts/:id"
           element={
             !authorizedUser ? (
-              <Login setAuthorizedUser={setAuthorizedUser} />
+              <Login setAuthorizedUser={setAuthorizedUser} setUserData={setUserData}/>
             ) : (
               <PostEditor />
             )
@@ -64,7 +65,7 @@ function App() {
         <Route path="/posts/create" element={<PostForm />} />
         <Route
           path="/login"
-          element={<Login setAuthorizedUser={setAuthorizedUser} />}
+          element={<Login setAuthorizedUser={setAuthorizedUser} setUserData={setUserData}/>}
         />
         <Route path="/signup" element={<SignUp />} />
       </Routes>

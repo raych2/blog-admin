@@ -29,7 +29,7 @@ const Navbar = styled.nav`
   }
 `;
 
-const Nav = ({ authorizedUser, setAuthorizedUser }) => {
+const Nav = ({ authorizedUser, setAuthorizedUser, setUserData }) => {
   return (
     <Navbar>
       {authorizedUser ? (
@@ -37,7 +37,7 @@ const Nav = ({ authorizedUser, setAuthorizedUser }) => {
           <NavLink to="/">
             <h1 className="authorized">TOP Blog Admin</h1>
           </NavLink>
-          <BurgerMenu setAuthorizedUser={setAuthorizedUser} />
+          <BurgerMenu setAuthorizedUser={setAuthorizedUser} setUserData={setUserData}/>
         </>
       ) : (
         <NavLink to="/">
