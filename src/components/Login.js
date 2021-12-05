@@ -83,6 +83,7 @@ const Login = ({ setAuthorizedUser, setUserData }) => {
       const auth = await response.json();
       if (auth.token) {
         localStorage.setItem('bearer', auth.token);
+        localStorage.setItem('name', username);
         setUserData(username);
         setAuthorizedUser(true);
         navigate('/posts');
