@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Nav from './components/Nav';
 import Home from './components/Home';
@@ -10,18 +10,6 @@ import PostEditor from './components/PostEditor';
 function App() {
   const [authorizedUser, setAuthorizedUser] = useState(false);
   const [userData, setUserData] = useState('');
-
-  useEffect(() => {
-    let user = localStorage.getItem('bearer');
-    let name = localStorage.getItem('name');
-    if (user) {
-      setAuthorizedUser(true);
-      setUserData(name);
-    } else {
-      setAuthorizedUser(false);
-      setUserData('');
-    }
-  }, []);
 
   return (
     <Router basename="/">
@@ -36,7 +24,10 @@ function App() {
           path="/"
           element={
             !authorizedUser ? (
-              <Login setAuthorizedUser={setAuthorizedUser} setUserData={setUserData}/>
+              <Login
+                setAuthorizedUser={setAuthorizedUser}
+                setUserData={setUserData}
+              />
             ) : (
               <Home userData={userData} />
             )
@@ -46,7 +37,10 @@ function App() {
           path="/posts"
           element={
             !authorizedUser ? (
-              <Login setAuthorizedUser={setAuthorizedUser} setUserData={setUserData}/>
+              <Login
+                setAuthorizedUser={setAuthorizedUser}
+                setUserData={setUserData}
+              />
             ) : (
               <Home userData={userData} />
             )
@@ -56,7 +50,10 @@ function App() {
           path="/posts/:id"
           element={
             !authorizedUser ? (
-              <Login setAuthorizedUser={setAuthorizedUser} setUserData={setUserData}/>
+              <Login
+                setAuthorizedUser={setAuthorizedUser}
+                setUserData={setUserData}
+              />
             ) : (
               <PostEditor />
             )
@@ -65,7 +62,12 @@ function App() {
         <Route path="/posts/create" element={<PostForm />} />
         <Route
           path="/login"
-          element={<Login setAuthorizedUser={setAuthorizedUser} setUserData={setUserData}/>}
+          element={
+            <Login
+              setAuthorizedUser={setAuthorizedUser}
+              setUserData={setUserData}
+            />
+          }
         />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
