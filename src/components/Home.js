@@ -29,7 +29,10 @@ const Home = ({ userData }) => {
       try {
         const response = await fetch(blogAPI);
         const data = await response.json();
-        setBlogPosts(data.posts);
+        const postsByUser = data.posts.filter(
+          (post) => post.author.username === userData
+        );
+        setBlogPosts(postsByUser);
       } catch (err) {
         console.log(err);
         setError(true);
