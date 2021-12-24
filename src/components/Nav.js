@@ -22,7 +22,7 @@ const Navbar = styled.nav`
   .authorized {
     margin-left: 1rem;
   }
-  @media (max-width: 400px) {
+  @media (max-width: 430px) {
     .authorized {
       margin: 1rem;
     }
@@ -37,7 +37,10 @@ const Nav = ({ authorizedUser, setAuthorizedUser, setUserData }) => {
           <NavLink to="/">
             <h1 className="authorized">TOP Blog Admin</h1>
           </NavLink>
-          <BurgerMenu setAuthorizedUser={setAuthorizedUser} setUserData={setUserData}/>
+          <BurgerMenu
+            setAuthorizedUser={setAuthorizedUser}
+            setUserData={setUserData}
+          />
         </>
       ) : (
         <NavLink to="/">
